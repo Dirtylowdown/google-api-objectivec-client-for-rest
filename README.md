@@ -1,11 +1,85 @@
-# Google APIs Client Library for Objective-C for REST
+delete
+void
+end
+stop
 
-**Project site** <https://github.com/google/google-api-objectivec-client-for-rest><br>
-**Discussion group** <http://groups.google.com/group/google-api-objectivec-client>
 
-[![CocoaPods](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/cocoapods.yml/badge.svg?branch=main)](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/cocoapods.yml)
-[![SwiftPM](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/swiftpm.yml/badge.svg?branch=main)](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/swiftpm.yml)
-[![ServiceGenerator](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/service_generator.yml/badge.svg?branch=main)](https://github.com/google/google-api-objectivec-client-for-rest/actions/workflows/service_generator.yml)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Written by Google, this library is a flexible and efficient Objective-C
 framework for accessing JSON APIs.
