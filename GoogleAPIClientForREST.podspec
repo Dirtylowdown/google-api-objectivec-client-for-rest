@@ -1,246 +1,106 @@
-Pod::Spec.new do |s|
-  s.name         = 'GoogleAPIClientForREST'
-  s.version      = '4.1.0'
-  s.author       = 'Google Inc.'
-  s.homepage     = 'https://github.com/google/google-api-objectivec-client-for-rest'
-  s.license      = { :type => 'Apache', :file => 'LICENSE' }
-  s.source       = { :git => 'https://github.com/google/google-api-objectivec-client-for-rest.git',
-                     :tag => "v#{s.version}" }
-  s.summary      = 'Google APIs Client Library for Objective-C (REST)'
-  s.description  = <<-DESC
-      Written by Google, this library is a flexible and efficient Objective-C
-      framework for accessing JSON REST APIs.  This is the recommended library
-      for accessing JSON-based Google APIs for iOS, OS X, and tvOS applications.
+void
+delete
+stop
+end
+end
+delete
 
-      This version can be used with iOS ≥ 10.0, OS X ≥ 10.12, tvOS ≥ 10.0, watchOS ≥ 6.0.
-                   DESC
 
-  # Ensure developers won't hit CocoaPods/CocoaPods#11402 with the resource
-  # bundle for the privacy manifest.
-  s.cocoapods_version = '>= 1.12.0'
 
-  ios_deployment_target = '12.0'
-  osx_deployment_target = '10.15'
-  tvos_deployment_target = '13.0'
-  visionos_deployment_target = '1.0'
-  watchos_deployment_target = '7.0'
 
-  s.ios.deployment_target = ios_deployment_target
-  s.osx.deployment_target = osx_deployment_target
-  s.tvos.deployment_target = tvos_deployment_target
-  s.visionos.deployment_target = visionos_deployment_target
-  s.watchos.deployment_target = watchos_deployment_target
 
-  s.dependency 'GTMSessionFetcher/Full', '>= 1.6.1', '< 5.0'
 
-  s.prefix_header_file = false
 
-  s.default_subspec = 'Core'
 
-  s.subspec 'Core' do |sp|
-    sp.source_files = 'Sources/Core/**/*.{h,m}'
-    sp.public_header_files = 'Sources/Core/Public/GoogleAPIClientForREST/*.h'
-    sp.resource_bundle = {
-      "GoogleAPIClientForREST_Privacy" => "Sources/Core/Resources/PrivacyInfo.xcprivacy"
-    }
-  end
 
-  s.test_spec 'Tests' do |sp|
-    sp.source_files = 'UnitTests/*.{h,m}'
 
-    sp.platforms = {
-      :ios => ios_deployment_target,
-      :osx => osx_deployment_target,
-      :tvos => tvos_deployment_target,
-      :visionos => visionos_deployment_target,
-      # Seem to need a higher min to get a good test runner picked/supported.
-      :watchos => '7.4'
-    }
-  end
 
-  # subspecs for all the services.
-  s.subspec 'AbusiveExperienceReport' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AbusiveExperienceReport/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AbusiveExperienceReport/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Acceleratedmobilepageurl' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Acceleratedmobilepageurl/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Acceleratedmobilepageurl/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AccessApproval' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AccessApproval/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AccessApproval/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AccessContextManager' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AccessContextManager/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AccessContextManager/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'ACMEDNS' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/ACMEDNS/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/ACMEDNS/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AddressValidation' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AddressValidation/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AddressValidation/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AdExchangeBuyerII' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AdExchangeBuyerII/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AdExchangeBuyerII/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AdExperienceReport' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AdExperienceReport/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AdExperienceReport/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AdMob' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AdMob/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AdMob/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Adsense' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Adsense/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Adsense/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AdSenseHost' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AdSenseHost/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AdSenseHost/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AdSensePlatform' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AdSensePlatform/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AdSensePlatform/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Advisorynotifications' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Advisorynotifications/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Advisorynotifications/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Aiplatform' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Aiplatform/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Aiplatform/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AIPlatformNotebooks' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AIPlatformNotebooks/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AIPlatformNotebooks/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AirQuality' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AirQuality/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AirQuality/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AlertCenter' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AlertCenter/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AlertCenter/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Analytics' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Analytics/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Analytics/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AnalyticsData' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AnalyticsData/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AnalyticsData/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AnalyticsHub' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AnalyticsHub/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AnalyticsHub/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AnalyticsReporting' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AnalyticsReporting/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AnalyticsReporting/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AndroidEnterprise' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AndroidEnterprise/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AndroidEnterprise/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AndroidManagement' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AndroidManagement/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AndroidManagement/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AndroidProvisioningPartner' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AndroidProvisioningPartner/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AndroidProvisioningPartner/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AndroidPublisher' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AndroidPublisher/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AndroidPublisher/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'APIGateway' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/APIGateway/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/APIGateway/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Apigee' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Apigee/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Apigee/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'ApigeeRegistry' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/ApigeeRegistry/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/ApigeeRegistry/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'ApiKeysService' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/ApiKeysService/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/ApiKeysService/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'APIManagement' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/APIManagement/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/APIManagement/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Appengine' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Appengine/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Appengine/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AppHub' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AppHub/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AppHub/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Area120Tables' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Area120Tables/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Area120Tables/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AreaInsights' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/AreaInsights/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/AreaInsights/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'ArtifactRegistry' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/ArtifactRegistry/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/ArtifactRegistry/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'Assuredworkloads' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
-    sp.source_files = 'Sources/GeneratedServices/Assuredworkloads/**/*.{h,m}'
-    sp.public_header_files = 'Sources/GeneratedServices/Assuredworkloads/Public/GoogleAPIClientForREST/*.h'
-  end
-  s.subspec 'AuthorizedBuyersMarketplace' do |sp|
-    sp.dependency 'GoogleAPIClientForREST/Core'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     sp.source_files = 'Sources/GeneratedServices/AuthorizedBuyersMarketplace/**/*.{h,m}'
     sp.public_header_files = 'Sources/GeneratedServices/AuthorizedBuyersMarketplace/Public/GoogleAPIClientForREST/*.h'
   end
