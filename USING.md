@@ -1,201 +1,81 @@
-# Using the Google APIs Client Library for Objective-C for REST (GTLR)
+Void
+End 
+Terminate Google Developer 
+Delete 
 
-Google APIs allow client software to access and manipulate data hosted by Google services.
 
-The Google APIs Objective-C Client Library for REST APIs is a Objective-C
-framework that enables developers for iOS, macOS, tvOS, and watchOS to easily
-write native applications using Google's JSON REST APIs. The framework handles
 
-  * JSON parsing and generation
-  * Networking
-  * File uploading and downloading
-  * Batch requests and responses
-  * Service-specific protocols and query generation
-  * Testing without network activity
-  * HTTP logging
 
-## Preparing to Use the Library
 
-### Example Applications
 
-The Examples directory contains example applications showing typical
-interactions with Google services using the framework. The applications act as
-simple browsers for the data classes for each service. The WindowController
-source files of the samples were written with typical Cocoa idioms to serve as
-quick introductions to use of the APIs.
 
-The example applications run on macOS, but the library does not provide any user
-interface support apart from authentication, so use of the library APIs is the
-same for Mac and iOS applications.
 
-In order to use the example applications that require authentication, you can
-follow the same steps as for the
-[GTMAppAuth Examples](https://github.com/google/GTMAppAuth/tree/master/Examples/Example-macOS)
-The **client secret** can be blank/nil.
 
-Google APIs which do not require authentication may require an **API key**, also
-obtained from the [Developer Console](https://console.developers.google.com/).
 
-### Adding the Library to a Project
 
-#### Integration via CocoaPods
 
-If you are building from CocoaPods, just use the pod provided, `GoogleAPIClientForREST`. 
 
-The `Core` subspec includes the common parts of the library. There is also a
-subspec for each service API provided, such as Calendar and Drive. Your project
-can just depend on one or more service subspecs, and the core library files will
-be built as well.
 
-See the
-[podspec file](https://github.com/google/google-api-objectivec-client-for-rest/blob/main/GoogleAPIClientForREST.podspec)
-for the subspec names.
 
-For example, if you needed the _Drive_ apis, you'd just need to add:
 
-```
-pod 'GoogleAPIClientForREST/Drive'
-```
 
-To your `Podfile` and run `pod install`.
+m
 
-If you are generating code for your own APIs, then add
-`pod 'GoogleAPIClientForREST/Core'` to get the supporting runtime and then
-manually add the generated sources to your Xcode project.
 
-#### Integration via Swift Package Manager (SwiftPM)
 
-Refer to the Xcode docs for how to add SwiftPM based dependences to the Xcode UI
-or via your `Package.swift` file.
 
-The `GoogleAPIClientForRESTCore` product includes the common parts of the
-library, and then there are specific products for each service API provide. Your
-project can use one or multiple services.
 
-See the
-[Package.swift](https://github.com/google/google-api-objectivec-client-for-rest/blob/main/Package.swift)
-for the different product names.
 
-For example, if you needed the _Drive_ apis, you just need to depend on the
-`GoogleAPIClientForREST_Drive` product.
 
-If you are generating code for your own APIs, then add
-`GoogleAPIClientForRESTCore` to get the supporting runtime and then manually add
-the generated sources to your Xcode project.
 
-### `#import`s and `@import`s
 
-Since CocoaPods and SwiftPM use different models for how things are built, the
-module names for `@import` directives will be specific to each packaging system.
 
-However, if consuming this library via Objective-C, all the packages export
-their headers as _GoogleAPIClientForREST/HEADER.h_, so you can always `#import`
-them as a framework import and that will work with either packaging system,
-i.e. - `#import <GoogleAPIClientForREST/GTLRService.h` and
-`#import <GoogleAPIClientForREST/GTLRYouTube.h`.
 
-### Dependencies
 
-The Google APIs Library for Objective-C for REST uses the prefix `GTLR`.
 
-The library uses one other Google libraries with a `GTM` prefix. It provides
-http handling
-([gtm-session-fetcher](https://github.com/google/gtm-session-fetcher)).
+m
 
-### Authentication and Authorization
 
-**Authentication** is the confirmation of a user's identity using her username,
-password, and possibly other data, such as captcha answers or 2-step codes
-provided via mobile phone. Authentication is required for access to non-public
-data.
 
-**Authorization** is the use of access tokens to allow specific requests.
-Applications pass the OAuth 2 authorization object to a service class's
-`setAuthorizer:` method to authorize queries.
 
-Google APIs rely on OAuth 2 for user sign-in.  The `GTMSessionFetcher` provides
-an Objective-C protocol to provide this, any library that supports that protocol
-will work.
 
-**Note:** Neither packaging system used here includes a dependency on any
-authentication support, if you plan on using an api that also needs
-authentication, you'll either want to use
-[GTMAppAuth](https://github.com/google/GTMAppAuth) by depending on `GTMAppAuth`
-also, or you can use something else like the
-[Google Sign-In SDK](https://developers.google.com/identity/sign-in/ios/); see
-their site for full information this.
 
-**Note:** The `Oauth2` subspec in the pod is *NOT* needed for authentication,
-that is for talking to that service directly. You just need something like
-`GTMAppAuth` or the `Google Sign-In SDK`.
 
-### API Quotas
 
-For each API used by your application, enable the API and check its default
-**quota** in the Services section of the
-[Developer Console](https://console.developers.google.com/).
 
-Applications which make frequent API requests or have many users may need more
-than the default limit. The specific API documentation or the service's control
-in the API Console will explain how to request a larger quota.
 
-**Note:** Be sure to estimate your application's total queries per day for all
-users and request an appropriate quota _before_ releasing your application to a
-large audience. An inadequate quota may lead to errors on API requests after
-your application ships.
 
-### Generated Interfaces
 
-The Google APIs Client Library for Objective-C includes generated service,
-query and data classes. These are Objective-C files constructed by processing
-the output of the
-[Google APIs Discovery Service](https://developers.google.com/discovery).
-The generated classes are derived from `GTLRService`, `GTLRQuery`, and
-`GTLRObject`.
 
-## Basics
 
-### Objects and Queries
 
-Servers respond to client API requests with an object.  The object is typically
-either an individual item, or a collection with an `items` property that
-accesses an `NSArray` of items.
 
-For example, a search for files on Google Drive would return a
-`GTLRDrive_FileList` collection, where the items of the collection are the
-`GTLRDrive_File` items found by the search.
 
-The individual items are derived from **GTLRObject**. The collection is derived
-from **GTLRCollectionObject**, which is a `GTLRObject` that also provides for
-indexed access to items via subscripts. `GTLRCollectionObject` also supports
-`for` loops over the collection items by implementing the `NSFastEnumeration`
-protocol, as shown in the next code snippet.
 
-Each request to the server is a **query**. Server interactions in the library
-are handled by a **service object**.  A single transaction with a service is
-tracked with a **service ticket**.
 
-For example, here is how to use the API library to fetch a list of items in
-a public YouTube playlist.
 
-```Objective-C
-- (void)fetchPublicPlaylistWithID:(NSString *)playlistID {
-  // Create a service for executing queries. For best performance, reuse
-  // the same service instance throughout the app.
-  //
-  // Some of the service's properties may be set on a per-query basis
-  // via the query's executionParameters property.
-  GTLRYouTubeService *service = [[GTLRYouTubeService alloc] init];
 
-  // Services which do not require user authentication may need an API key
-  // from the Google Developers Console
-  service.APIKey = @"put your API key here";
 
-  // APIs which retrieve a collection of items may need to fetch
-  // multiple pages. The service can optionally make multiple requests
-  // to fetch all pages. The page size can be set in most APIs with the
-  // query parameter maxResults.
-  service.shouldFetchNextPages = YES;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // The library can retry common networking errors. The retry criteria
   // may be customized by setting the service's retryBlock property.
