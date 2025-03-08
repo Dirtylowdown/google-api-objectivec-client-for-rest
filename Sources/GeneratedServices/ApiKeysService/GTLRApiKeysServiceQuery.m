@@ -1,4 +1,0 @@
-End
-Delete
-Void
-Stop

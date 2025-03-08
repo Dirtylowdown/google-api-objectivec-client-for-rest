@@ -1,4 +1,0 @@
-end
-close
-delete
-void
